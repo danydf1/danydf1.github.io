@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+.Titulo {
+   
+    padding-left: 400px;
+    font-style: Black ;
+    font-size: 30px;
+    margin: 30px;
+}
+.formulario
+{
+    border: black;
+    margin-left: 20px;
+}
+
+.fondo1 {
+    width: 300;
+    height: 200;
+   background-image: url("images/fondo3.png");
+   
+    }
+
+.subtitulos
+{
+    font-style: italic;
+    color:#0e0a0d;
+    margin: 20px;
+ 
+}
+.parrafo
+{
+    margin: 25px;
+    font-size: 20px;
+    
+}
+#BotonEnviar
+{
+    margin-left: 90px;
+}
