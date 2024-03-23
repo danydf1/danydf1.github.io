@@ -1,12 +1,11 @@
  .body{
+    font-family: "Homer Simpson UI";
     background-image: url("./Img/Fondo.jpg");
     height: 100vh;
 }
 
 .Nombre{
-    font-family: "Homer Simpson UI";
     color: #e2e2e2;
-    width: 200%;
     text-align: center;
     font-size: 40px;
 }
@@ -19,10 +18,6 @@ h1{
 h5{
     letter-spacing: 1rem;
 }
-/*
-img{
-   width: 10%;
-} */
 
 * {
     margin: 0;
@@ -79,30 +74,11 @@ img{
     font-size: inherit;
   }
   
-  ::selection {
-    background-color: var(--negro);
-    color: var(--blanco);
-  }
-  
-  form, input, textarea, select, button {
-    font-family: inherit;
-    font-size: inherit;
-    -webkit-hyphens: auto;
-            hyphens: auto;
-    background-color: transparent;
-    display: block;
-  }
-  
 body {
-    font-family: var(--tipo-principal);
-    font-size: 100%;
-    line-height: 1.4em;
+    font-size: 100%;  
     min-height: 100vh;
-    background-color: var(--blanco);
-    color: var(--negro);
     -webkit-hyphens: auto;
             hyphens: auto;
-    font-smooth: always;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: flex;
@@ -111,20 +87,17 @@ body {
     align-items: center;
   }
 .carrousel {
-    width: 90%;
+    width: 100%;
     max-width: 120em;
-    padding: 2em;
+
     color: black;
     transition: all 0.4s ease;
-    border-radius: 1em;
-    background-color: var(--blanco);
-    box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec), inset 0 0 0 transparent, inset 0 0 0 transparent;
     overflow: hidden;
   }
   
   .carrousel .grande {
     width: 500%;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -132,19 +105,16 @@ body {
     color: black;
     transition: all 0.4s ease;
     border-radius: 1em;
-       padding: 2em;
     transition: all 0.5s ease;
     transform: translateX(0%);
   }
   
-  .carrousel .tarjetas{
-    width: calc( 100% / 5 - 2em);
+  .carrousel .tarjeta{
+    width: calc( 100% / 5 - 1em);
     min-height: 10vh;
     color: black;
     transition: all 0.4s ease;
-    border-radius: 1em;
-    background-color: white;
-    box-shadow: 1em 1em 2em grey, -1em -1em 2em grey, inset 0 0 0 transparent, inset 0 0 0 transparent;
+    
   }
   
   .carrousel .puntos {
@@ -170,4 +140,12 @@ body {
   
   .carrousel .punto.activo {
     background-color: lightblue;
+  }
+
+  .SobreMi{
+    padding: 5%;
+  }
+  .SobreMi .Titulo{
+    color: #e2e2e2;
+    font-size: 40px;
   }
