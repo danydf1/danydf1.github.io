@@ -33,6 +33,7 @@ h5{
     display: block;
     object-fit: cover;
     object-position: center center;
+    padding: 10px;
   }
   
   a {
@@ -148,4 +149,33 @@ body {
   .SobreMi .Titulo{
     color: #e2e2e2;
     font-size: 40px;
+  }
+
+  .SobreMi .resumen{
+    color: #e2e2e2;
+  }
+
+  .foto{
+    object-fit: cover;
+    border-radius: 10%;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+
+  .container{
+    margin:10px !important;
+  }
+
+  .proyectos .img-fluid{
+    width: 200px;
+  } 
+  .listaTrabajos{
+    color: #e2e2e2;
+    font-size: 20px;
+  }
+  .proyectos .subtitulo{
+    color: #e2e2e2;
+  }
+  .Experiencias .subtitulo{
+    color: #e2e2e2;
   }
