@@ -4,19 +4,22 @@
     height: 100vh;
 }
 
-.Nombre{
+.Nombre h1{
     color: #e2e2e2;
     text-align: center;
-    font-size: 40px;
+    font-size: 3rem !important;
 }
 
-h1{
+/* h1{
     margin: 10px;
     font-weight: 50;
-}
+} */
 
-h5{
+.Nombre h5{
     letter-spacing: 1rem;
+    color: #e2e2e2;
+    text-align: center;
+    font-size: 2rem !important;
 }
 
 * {
@@ -90,9 +93,8 @@ body {
 .carrousel {
     width: 100%;
     max-width: 120em;
-
     color: black;
-    transition: all 0.4s ease;
+    transition: all 0.6s ease;
     overflow: hidden;
   }
   
@@ -106,12 +108,12 @@ body {
     color: black;
     transition: all 0.4s ease;
     border-radius: 1em;
-    transition: all 0.5s ease;
+    transition: all 0.9s ease;
     transform: translateX(0%);
   }
   
   .carrousel .tarjeta{
-    width: calc( 100% / 5 - 1em);
+    width: calc( 100% / 5 - 2em);
     min-height: 10vh;
     color: black;
     transition: all 0.4s ease;
@@ -148,26 +150,24 @@ body {
   }
   .SobreMi .Titulo{
     color: #e2e2e2;
-    font-size: 40px;
+    font-size: 50px;
   }
 
   .SobreMi .resumen{
     color: #e2e2e2;
+    font-size: 25px;
   }
 
   .foto{
     object-fit: cover;
     border-radius: 10%;
-    margin-top: 10px;
-    margin-left: 20px;
+    height: 100%;
+    width: 91%;
   }
 
   .container{
     margin:10px !important;
-  }
-
-  .proyectos .img-fluid{
-    width: 200px;
+    max-width: 100% !important;
   } 
   .listaTrabajos{
     color: #e2e2e2;
@@ -178,4 +178,41 @@ body {
   }
   .Experiencias .subtitulo{
     color: #e2e2e2;
+  }
+
+  .proyectos .logo{
+    width: 30%;
+  }
+  .proyectos h6{
+    color: #e2e2e2;
+    font-size: 25px;
+    margin-left: 2%;
+  }
+
+  .conocimientos img{
+    width: 15%;
+  }
+
+  .Bio h2{
+    color: #e2e2e2;
+    font-size: 40px;
+  }
+
+  .Bio .formacion h3{
+    color: #e2e2e2;
+    font-size: 40px;
+  }
+  .Bio .formacion h6{
+    color: #e2e2e2;
+    font-size: 22px;
+  }
+
+  .Bio .formacion p{
+    color: #e2e2e2;
+    font-size: 16px;
+  }
+
+  .Contacto h2 {
+    color: #e2e2e2;
+    font-size: 40px;
   }
