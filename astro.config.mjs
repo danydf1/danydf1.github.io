@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://danydf1.github.io/',
+  site: 'https://danydf1.github.io',
   base: 'danydf1.github.io',
   output: 'static',
   vite: {
