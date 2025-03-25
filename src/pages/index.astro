@@ -1,0 +1,24 @@
+---
+import AboutMe from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Education from "../components/Education.astro";
+import Experience from "../components/experiences/Experience.astro";
+import Hero from "../components/Hero.astro";
+import Navbar from "../components/nav/navbar.astro";
+import Proyects from "../components/proyects/Proyects.astro";
+import Layout from "../layouts/Layout.astro";
+---
+<Layout>
+  <Navbar/>
+  <Hero/>
+  <div class="container w-[70%] m-auto">
+    <Experience/>
+    <Proyects/>
+    <Education/>
+    <AboutMe/>
+    <Contact/>
+  </div>
+
+</Layout>
+
+

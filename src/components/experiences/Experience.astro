@@ -1,0 +1,31 @@
+---
+import Info from "./components/Info.astro";
+import Subtitle from "../Subtitle.astro";
+
+---
+
+<section id="experiencia" class="mb-10">
+
+    <Subtitle text="Experiencia" />
+    <div class="flex flex-col">
+        <div class="relative pl-6 border-l-2 border-cyan-500/30 max-w-2xl w-full just">
+            <Info 
+            company="Grupo Amedia" 
+            date="abril 2022 - Actualidad" 
+            task={["Maquetación de interfaces responsive",
+                    "Desarrollo con React.js",
+                    "Optimización de performance"
+                ]}
+            />
+
+            <Info 
+            company="Grupo San Miguel" 
+            date="Agosto 2021 - abril 2022" 
+            task={["Maquetación de interfaces responsive",
+                    "Desarrollo con React.js",
+                    "Optimización de performance"
+                ]}
+            />
+        </div>
+    </div>
+</section>
