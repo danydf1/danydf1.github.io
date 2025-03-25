@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: 'https://danydf1.github.io/',
   base: 'danydf1.github.io',
+  output: 'static',
   vite: {
     plugins: [tailwindcss()]
   }
