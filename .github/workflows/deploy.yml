@@ -1,4 +1,4 @@
-name: Deploy Astro to GitHub Pages
+name: Deploy Astro to GitHub Pages (Simplified)
 
 on:
   push:
@@ -6,13 +6,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,18 +34,12 @@ jobs:
         run: pnpm install
 
       - name: Build Astro site
-        run: pnpm run build
+        run: |
+          pnpm run build
+          touch ./dist/.nojekyll  # Create required file
 
-      - name: Create .nojekyll file
-        run: touch ./dist/.nojekyll
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
+        with:
+          asset_path: ./dist  # Directly specify build directory
