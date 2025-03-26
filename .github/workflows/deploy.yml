@@ -24,11 +24,6 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm astro build
-      - name: Dev project
-        run: pnpm astro dev
-        
-        
-
   deploy:
     needs: build
     runs-on: ubuntu-latest
