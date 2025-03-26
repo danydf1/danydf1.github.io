@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Astro to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,22 +11,29 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Astro
-        run: npm run build
-
-      - name: Add .nojekyll file
-        run: touch dist/.nojekyll # ¡Crítico para desactivar Jekyll!
+      - name: Install dependencies with pnpm
+        uses: pnpm/action-setup@v2
         with:
-          package-manager: pnpm@7 # Specify the version of pnpm here
+          version: 7
+
+      - name: Build Astro site
+        uses: withastro/action@v3
+        with:
+          package-manager: pnpm@7
+
+      - name: Add .nojekyll file (Critical for GitHub Pages)
+        run: touch ./dist/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
