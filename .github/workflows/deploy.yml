@@ -11,13 +11,20 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Add .nojekyll file
+        run: touch dist/.nojekyll # ¡Crítico para desactivar Jekyll!
         with:
           package-manager: pnpm@7 # Specify the version of pnpm here
 
