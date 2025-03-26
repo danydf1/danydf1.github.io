@@ -1,12 +1,22 @@
 ---
+import Info from "./Info.astro";
 import Subtitle from "./Subtitle.astro";
 ---
 
 <section id="education">
     <Subtitle text="Educacion academica" />
-    <h5>Técnico superior en programación</h5>
-    <p>Universidad Tecnologica Nacional | graduado 2024</p>
-    
-    <h5>Secundario Bachiller en Ciencias Sociales</h5>
-    <p>Instituto Glaciar Perito Moreno | Graduado en 2015</p>
+    <div class="flex flex-col">
+        <div class="relative pl-6 border-l-2 border-cyan-500/30 max-w-2xl w-full just">
+            <Info 
+            company="Técnico superior en programación" 
+            date="Graduado en 2024" 
+            task={["Universidad Tecnologica Nacional"]}
+            />
+
+            <Info 
+            company="Secundario Bachiller en Ciencias Sociales" 
+            date="Graduado en 2015" 
+            task={["Instituto Glaciar Perito Moreno"]}
+            />
+        </div>
 </section>

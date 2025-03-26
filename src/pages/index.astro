@@ -2,23 +2,24 @@
 import AboutMe from "../components/About.astro";
 import Contact from "../components/Contact.astro";
 import Education from "../components/Education.astro";
-import Experience from "../components/experiences/Experience.astro";
+import Experience from "../components/Experience.astro";
 import Hero from "../components/Hero.astro";
 import Navbar from "../components/nav/navbar.astro";
 import Proyects from "../components/proyects/Proyects.astro";
+import Skills from "../components/Skills.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 <Layout>
   <Navbar/>
   <Hero/>
-  <div class="container w-[70%] m-auto">
+  <div class="container w-[65%] m-auto space-y-10">
     <Experience/>
     <Proyects/>
-    <Education/>
     <AboutMe/>
+    <Education/>
+    <Skills/>
     <Contact/>
   </div>
-
 </Layout>
 
 

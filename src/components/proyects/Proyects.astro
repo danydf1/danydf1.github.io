@@ -2,13 +2,45 @@
 import Subtitle from "../Subtitle.astro";
 import Cards from "./Component/cards.astro";
 ---
+
 <section id="Proyects">
     <Subtitle text="Proyectos" />
     <div class="flex space-x-2 justify-left flex-wrap mb-10">
-        <Cards title="Aval" description="asd" tags={['asddsa']} imageUrl="" />
-        <Cards title="Fasic" description="dsa" tags={['asddsa']} imageUrl=""/>
-        <Cards title="GSM Tech team" description="dsa" tags={['asddsa']} imageUrl=""/>
-        <Cards title="Consultoria Integral Ferradas" description="ad" tags={['asddsa']} imageUrl=""/>
-        <Cards title="Aberturas Leon" description="asd" tags={['asddsa']} imageUrl=""/>
+        <Cards
+            title="Consultoria Integral Ferradas"
+            description="La pagina fue desarrollada con html, css y javascripts de manera freelance"
+            tags={["html", "css", "js"]}
+            imageUrl="../img/colsultoriaFerradas.webp"
+            url="https://consultoriaferradas.com/"
+        />
+        <Cards
+            title="Aval"
+            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
+            tags={["html", "css", "js"]}
+            imageUrl="../img/Aval.webp"
+            url="https://seguridadaval.com.ar/"
+        />
+        <Cards
+            title="Fasic"
+            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
+            tags={["html", "css", "js"]}
+            imageUrl="../img/fasic.webp"
+            url="https://www.fasic.com.ar/"
+        />
+        <Cards
+            title="GSM Tech team"
+            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
+            tags={["html", "css", "js"]}
+            imageUrl="../img/icongsmtech.png"
+            url="https://www.gsmtechteams.com/"
+        />
+
+        <Cards
+            title="Aberturas Leon"
+            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
+            tags={["html", "css", "js"]}
+            imageUrl="../img/aberturasLeon.webp"
+            url="https://aberturasleon.com.ar/"
+        />
     </div>
 </section>
