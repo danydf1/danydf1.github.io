@@ -19,10 +19,10 @@ jobs:
           node-version: '22'
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Build
-        run: npm run build
+        run: pnpm astro build
 
       - name: Deploy
-        run: npm run deploy
+        run: pnpm run preview
