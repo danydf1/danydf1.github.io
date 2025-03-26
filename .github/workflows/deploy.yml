@@ -19,11 +19,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
-          package-manager: pnpm@8
-      - name: Install dependencies
-        run: pnpm install
-      - name: Build project
-        run: pnpm astro build
+          package-manager: pnpm@7
   deploy:
     needs: build
     runs-on: ubuntu-latest
