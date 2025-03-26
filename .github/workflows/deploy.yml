@@ -19,7 +19,8 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
-          package-manager: pnpm@7 # Specify the version of pnpm here
+          package-manager: pnpm:10
+          output-dir: dist
 
   deploy:
     needs: build
