@@ -17,22 +17,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies with pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 7
 
-      - name: Build Astro site
-        uses: withastro/action@v3
-        with:
-          package-manager: pnpm@7
+      - name: Install dependencies
+        run: pnpm install
 
-      - name: Add .nojekyll file (Critical for GitHub Pages)
-        run: touch ./dist/.nojekyll
+      - name: Build Astro site
+        run: pnpm run build
+
+      - name: Generate unique artifact name
+        id: artifact
+        run: echo "name=astro-site-$(date +%s)" >> $GITHUB_OUTPUT
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
+          name: ${{ steps.artifact.outputs.name }}  # Nombre único para cada artefacto
           path: ./dist
 
   deploy:
@@ -44,4 +47,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
