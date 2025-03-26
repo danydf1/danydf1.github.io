@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build project
-        run: pnpm astro add tailwind
+        run: pnpm astro preview
         
         
 
