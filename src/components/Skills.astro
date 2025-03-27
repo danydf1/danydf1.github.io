@@ -1,8 +1,56 @@
 ---
 import Subtitle from "./Subtitle.astro";
+
+// src/components/SkillsCombined.astro
+const mainSkills = [
+    { name: "JavaScript", years: 4 },
+    { name: ".NET Core", years: 3 },
+    { name: "SQL Server", years: 3 },
+];
+
+const otherSkills = [".NET Core", "SQL", "Tailwind CSS", "Bootstrap", "Git"];
 ---
 
 <section id="skills">
     <Subtitle text="Competencias" />
-    Pendiente para pensar
+    <div class="space-y-8">
+        <!-- Habilidades principales -->
+        <div>
+            <h3 class="text-xl text-gray-300 mb-4">Principales</h3>
+            <div class="space-y-4">
+                {
+                    mainSkills.map((skill) => (
+                        <div class="flex items-center space-x-4">
+                            <span class="text-cyan-400 w-24 text-right">
+                                {skill.name}
+                            </span>
+                            <div class="flex-1 bg-gray-800 rounded-full h-2">
+                                <div
+                                    class="bg-cyan-500 h-2 rounded-full"
+                                    style={`width: ${Math.min(100, skill.years * 25)}%`}
+                                />
+                            </div>
+                            <span class="text-gray-400 text-sm ">
+                                {skill.years}+ años
+                            </span>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Otras habilidades -->
+        <div>
+            <h3 class="text-xl text-gray-300 mb-4">Otras</h3>
+            <div class="flex flex-wrap gap-3">
+                {
+                    otherSkills.map((skill) => (
+                        <span class="text-gray-300 bg-gray-800/50 px-3 py-1 rounded-full text-sm">
+                            {skill}
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </section>
