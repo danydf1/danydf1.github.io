@@ -1,0 +1,75 @@
+---
+import { cn } from "../utils/cn";
+
+interface Props {
+  href: string;
+  class?: string;
+  children: any;
+}
+
+const { href, class: className, children } = Astro.props;
+---
+
+<a
+  href={href}
+  data-nav-link
+  class={cn(
+    "relative text-slate-300 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:text-white hover:bg-slate-800/50",
+    className
+  )}
+>
+  {children}
+  <span class="nav-underline"></span>
+</a>
+
+<style>
+  .nav-underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+  
+  [data-nav-link]:hover .nav-underline,
+  [data-nav-link].active .nav-underline {
+    width: 60%;
+  }
+  
+  [data-nav-link]:hover,
+  [data-nav-link].active {
+    color: white;
+  }
+</style>
+
+<script>
+  // Detectar sección activa basado en scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 100;
+    
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink();
+</script>

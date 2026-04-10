@@ -1,46 +1,101 @@
 ---
-import Subtitle from "../Subtitle.astro";
-import Cards from "./Component/cards.astro";
+const projects = [
+  {
+    title: "Aval",
+    description: "Plataforma web de gestión de avales y garantías con autenticación y reportes.",
+    tags: [".NET Core", "Blazor", "SQL Server"],
+    url: "https://seguridadaval.com.ar/"
+  },
+  {
+    title: "Fasic",
+    description: "Aplicación de facturación y gestión de stock integrada con servicios externos.",
+    tags: ["C#", "REST APIs", "SQL Server"],
+    url: "https://www.fasic.com.ar/"
+  },
+  {
+    title: "GSM Tech Team",
+    description: "Portal interno del equipo de tecnología con dashboards y métricas de proyectos.",
+    tags: ["React", ".NET Core", "Azure"],
+    url: "https://www.gsmtechteams.com/"
+  }
+];
 ---
 
-<section id="Proyects">
-    <Subtitle text="Proyectos" />
-    <div class="flex space-x-2 justify-left flex-wrap mb-10">
-        <Cards
-            title="Consultoria Integral Ferradas"
-            description="La pagina fue desarrollada con html, css y javascripts de manera freelance"
-            tags={["html", "css", "js"]}
-            imageUrl="../img/colsultoriaFerradas.webp"
-            url="https://consultoriaferradas.com/"
-        />
-        <Cards
-            title="Aval"
-            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
-            tags={["html", "css", "js"]}
-            imageUrl="../img/Aval.webp"
-            url="https://seguridadaval.com.ar/"
-        />
-        <Cards
-            title="Fasic"
-            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
-            tags={["html", "css", "js"]}
-            imageUrl="../img/fasic.webp"
-            url="https://www.fasic.com.ar/"
-        />
-        <Cards
-            title="GSM Tech team"
-            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
-            tags={["html", "css", "js"]}
-            imageUrl="../img/icongsmtech.png"
-            url="https://www.gsmtechteams.com/"
-        />
-
-        <Cards
-            title="Aberturas Leon"
-            description="La pagina fue realizada con html, css y javascripts estando en la empresa Grupo San Miguel"
-            tags={["html", "css", "js"]}
-            imageUrl="../img/aberturasLeon.webp"
-            url="https://aberturasleon.com.ar/"
-        />
+<section id="Proyects" class="py-20 scroll-reveal">
+  <div class="container mx-auto max-w-5xl">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+      Mis <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Proyectos</span>
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, index) => (
+        <a 
+          href={project.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6 transition-all duration-500 hover:scale-[1.03] hover:border-blue-500/50 group animate-fade-in"
+          style={`animation-delay: ${index * 100}ms;`}
+        >
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
+              {project.title}
+            </h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link text-slate-500 group-hover:text-blue-400 transition-colors mt-1">
+              <path d="M15 3h6v6"></path>
+              <path d="M10 14 21 3"></path>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            </svg>
+          </div>
+          <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+            {project.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="inline-flex items-center rounded-full border border-slate-600 px-2.5 py-0.5 text-xs text-slate-300 font-medium hover:border-blue-500 hover:text-blue-400 transition-colors">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </a>
+      ))}
     </div>
+  </div>
 </section>
+
+<style>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

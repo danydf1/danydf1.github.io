@@ -7,10 +7,22 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="./img/favicon.webp" type="image/x-icon" />
-    <title>Daniel Fernandez</title>
+    <meta name="description" content="Portfolio de Daniel Fernandez - .NET Developer especializado en soluciones robustas con el ecosistema .NET" />
+    <meta name="author" content="Daniel Fernandez" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Daniel Fernandez - .NET Developer" />
+    <meta property="og:description" content="Portfolio de Daniel Fernandez - .NET Developer" />
+    <meta property="og:type" content="website" />
+    
+    <link rel="icon" href="./img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Daniel Fernandez | .NET Developer</title>
   </head>
-  <body>
+  <body class="bg-slate-900 text-white antialiased">
     <slot />
   </body>
   <footer>
@@ -20,16 +32,30 @@ import Footer from "../components/Footer.astro";
 
 <style is:global>
   @import "tailwindcss";
-  html,
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    margin: 0 auto;
-    background: radial-gradient(
-      circle,
-      rgba(0, 22, 131, 1) 0%,
-      rgb(4, 3, 54) 100%
-    );
-    font-family: 'Inter', sans-serif;
-    color: white;
-    
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0F172A;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
   }
 </style>

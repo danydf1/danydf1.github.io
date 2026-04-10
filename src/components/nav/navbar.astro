@@ -1,76 +1,129 @@
-<nav class="fixed w-full bg-transparent backdrop-blur-sm z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Enlaces para desktop -->
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-center space-x-4">
-            <a 
-              href="#experiencia" 
-              class="nav-link relative text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-            >
-              Experiencia
-              <span class="nav-link-underline"></span>
-            </a>
-            <a 
-              href="#Proyects" 
-              class="nav-link relative text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-            >
-              Proyectos
-              <span class="nav-link-underline"></span>
-            </a>
-            <a 
-              href="#education" 
-              class="nav-link relative text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-            >
-              Educación
-              <span class="nav-link-underline"></span>
-            </a>
-            <a 
-              href="#About" 
-              class="nav-link relative text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-            >
-              Sobre mí
-              <span class="nav-link-underline"></span>
-            </a>
-            <a 
-              href="#contact" 
-              class="nav-link relative text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]"
-            >
-              Contactos
-              <span class="nav-link-underline"></span>
-            </a>
-          </div>
-        </div>
-        
-        <!-- Botón para mobile -->
-        <div class="md:hidden">
-          <button class="text-white hover:text-gray-300 focus:outline-none">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
+---
+const navLinks = [
+  { href: "#hero", label: "Inicio" },
+  { href: "#About", label: "Sobre mí" },
+  { href: "#experiencia", label: "Experiencia" },
+  { href: "#Proyects", label: "Proyectos" },
+  { href: "#education", label: "Educación" },
+  { href: "#certifications", label: "Certificaciones" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contacto" },
+];
+---
+
+<nav class="fixed w-full top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/50">
+  <div class="container mx-auto flex items-center justify-between py-4 px-4">
+    <!-- Logo -->
+    <a href="#hero" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+      DF
+    </a>
+    
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <li>
+          <a 
+            href={link.href} 
+            data-nav-link
+            class="relative text-sm text-slate-400 hover:text-white transition-colors nav-link"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-white" id="mobile-menu-btn" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12"></line>
+        <line x1="4" x2="20" y1="6" y2="6"></line>
+        <line x1="4" x2="20" y1="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
   
-  <style is:global>
-    .nav-link {
-      position: relative;
-    }
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-slate-900/95 border-t border-slate-800" id="mobile-menu">
+    <ul class="flex flex-col py-4 px-4 gap-4">
+      {navLinks.map((link) => (
+        <li>
+          <a 
+            href={link.href} 
+            class="block text-sm text-slate-400 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+  
+  // Nav active state based on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 100;
     
-    .nav-link-underline {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 1px;
-      background-color: white;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-link:hover .nav-link-underline {
-      width: 80%;
-      left: 10%;
-    }
-  </style>
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink();
+</script>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: white;
+  }
+</style>

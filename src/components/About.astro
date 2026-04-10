@@ -1,15 +1,40 @@
 ---
-import Subtitle from "./Subtitle.astro";
 ---
 
-<section id="About">
-    <Subtitle text="Sobre Mi" />
-    <h5>
-        Soy un desarrollador Fullstack con experiencia en C#, JavaScript, .NET
-        Core, Blazor, MVC, y Entity Framework. He trabajado con empresas como
-        Movistar, AbinBev y Conmebol.
-    </h5>
-    <h5> Me considero activo, puntual y disfruto
-        trabajar tanto de forma independiente como en equipo. Busco proyectos
-        donde pueda seguir aprendiendo y desarrollándome profesionalmente.</h5>
+<section id="About" class="py-20 scroll-reveal">
+  <div class="container mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      Sobre <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">mí</span>
+    </h2>
+    <p class="text-slate-400 leading-relaxed text-lg">
+      Desarrollador .NET con experiencia en APIs, bases de datos y despliegue en la nube.
+    </p>
+  </div>
 </section>
+
+<style>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

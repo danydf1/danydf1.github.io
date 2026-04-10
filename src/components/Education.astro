@@ -1,22 +1,81 @@
 ---
-import Info from "./Info.astro";
-import Subtitle from "./Subtitle.astro";
+const education = [
+  {
+    date: "2024",
+    title: "Técnico Superior en Programación",
+    company: "Universidad Tecnológica Nacional (UTN)",
+    description: "Formación técnica en desarrollo de software y sistemas informáticos."
+  },
+  {
+    date: "2015",
+    title: "Bachiller en Ciencias Sociales",
+    company: "Instituto Glaciar Perito Moreno",
+    description: "Educación secundaria con orientación en ciencias sociales."
+  }
+];
 ---
 
-<section id="education">
-    <Subtitle text="Educacion academica" />
-    <div class="flex flex-col">
-        <div class="relative pl-6 border-l-2 border-cyan-500/30 max-w-2xl w-full just">
-            <Info 
-            company="Técnico superior en programación" 
-            date="Graduado en 2024" 
-            task={["Universidad Tecnologica Nacional"]}
-            />
-
-            <Info 
-            company="Secundario Bachiller en Ciencias Sociales" 
-            date="Graduado en 2015" 
-            task={["Instituto Glaciar Perito Moreno"]}
-            />
+<section id="education" class="py-20 scroll-reveal">
+  <div class="container mx-auto max-w-2xl">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+      <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Educación</span>
+    </h2>
+    
+    <div>
+      {education.map((item, index) => (
+        <div class={`relative pl-10 pb-12 last:pb-0 animate-fade-${index % 2 === 0 ? 'left' : 'right'}`}>
+          <!-- Vertical line -->
+          <div class="absolute left-[15px] top-0 bottom-0 w-px bg-slate-700"></div>
+          
+          <!-- Dot -->
+          <div class="absolute left-[8px] top-1 w-[15px] h-[15px] rounded-full bg-blue-500 border-2 border-slate-900"></div>
+          
+          <!-- Card -->
+          <div class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+            <div class="flex items-center gap-2 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span class="text-sm text-blue-400 font-medium">{item.date}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+            <p class="text-slate-400 text-sm mb-2">{item.company}</p>
+            <p class="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+          </div>
         </div>
+      ))}
+    </div>
+  </div>
 </section>
+
+<style>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-fade-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-fade-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-fade-left.visible,
+  .animate-fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

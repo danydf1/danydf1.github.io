@@ -1,0 +1,117 @@
+---
+const certifications = [
+  {
+    date: "Dic. 2025",
+    title: "Bootcamp 4.0 .NET + React",
+    company: "Devlights",
+    description: "Bootcamp intensivo de desarrollo full stack con enfoque en .NET y React.",
+    url: "https://www.linkedin.com/in/daniel-david-fernandez-7444531b9/overlay/Certifications/623118439/treasury/?profileId=ACoAADLKLWQBd5EN72MBd9a9BUgRiwDI9NkR5rc"
+  },
+  {
+    date: "Sept. 2025",
+    title: "Curso de Iniciación al Desarrollo con IA",
+    company: "BigSchool",
+    description: "Curso sobre fundamentos del desarrollo con inteligencia artificial.",
+    url: "https://www.linkedin.com/in/daniel-david-fernandez-7444531b9/overlay/Certifications/712741535/treasury/?profileId=ACoAADLKLWQBd5EN72MBd9a9BUgRiwDI9NkR5rc"
+  },
+  {
+    date: "Jun. 2025",
+    title: "Python Interactivo",
+    company: "Desafío Latam",
+    description: "Curso interactivo de programación con Python.",
+    url: "https://www.linkedin.com/in/daniel-david-fernandez-7444531b9/overlay/Certifications/524705588/treasury/?profileId=ACoAADLKLWQBd5EN72MBd9a9BUgRiwDI9NkR5rc"
+  }
+];
+---
+
+<section id="certifications" class="py-20 scroll-reveal">
+  <div class="container mx-auto max-w-2xl">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+      <span class="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Certificaciones</span>
+    </h2>
+    
+    <div>
+      {certifications.map((item, index) => (
+        <div class={`relative pl-10 pb-12 last:pb-0 animate-fade-${index % 2 === 0 ? 'left' : 'right'}`}>
+          <!-- Vertical line -->
+          <div class="absolute left-[15px] top-0 bottom-0 w-px bg-slate-700"></div>
+          
+          <!-- Dot -->
+          <div class="absolute left-[8px] top-1 w-[15px] h-[15px] rounded-full bg-blue-500 border-2 border-slate-900"></div>
+          
+          <!-- Card -->
+          <div class="bg-slate-800/30 border border-slate-700/50 rounded-lg p-6 hover:border-blue-500/30 transition-colors">
+            <div class="flex items-center gap-2 mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+              <span class="text-sm text-blue-400 font-medium">{item.date}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-white">{item.title}</h3>
+            <p class="text-slate-400 text-sm mb-3">{item.company}</p>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">{item.description}</p>
+            <a 
+              href={item.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              Ver certificado
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .animate-fade-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-fade-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animate-fade-left.visible,
+  .animate-fade-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.scroll-reveal, .animate-fade-left, .animate-fade-right').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
