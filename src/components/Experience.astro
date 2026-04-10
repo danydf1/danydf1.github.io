@@ -2,16 +2,28 @@
 const jobs = [
   {
     date: "2022 — Presente",
-    title: "Desarrollador .NET",
+    title: "Full Stack Developer",
     company: "Grupo Amedia",
-    description: "Desarrollo y mantenimiento de aplicaciones web con ASP.NET Core, Entity Framework y SQL Server. Participación en equipos ágiles con Scrum y Azure DevOps.",
+    tasks: [
+      "Mantenimiento evolutivo y correctivo de plataformas para clientes internacionales",
+      "Desarrollo de nuevas funcionalidades usando C#, .NET MVC, Entity Framework, JavaScript, jQuery y SQL Server",
+      "Implementación de mejoras de rendimiento y optimización de consultas en SQL Server",
+      "Integración de servicios REST y consumo de APIs externas",
+      "Gestión de versiones con Git (Bitbucket) y trabajo colaborativo en equipos ágiles bajo metodologías Scrum",
+      "Diseño e implementación desde cero de una automatización con n8n que procesa mensajes de soporte mediante webhook y envía correos automáticos, mejorando la eficiencia operativa y reduciendo la carga manual"
+    ],
     align: "left"
   },
   {
     date: "2020 — 2022",
-    title: "Desarrollador de Software",
-    company: "Grupo San Miguel",
-    description: "Diseño e implementación de sistemas internos de gestión, reportes y automatización de procesos utilizando C#, .NET Framework y bases de datos SQL Server.",
+    title: "Frontend Developer",
+    company: "GSM TECH",
+    tasks: [
+      "Maquetación de interfaces web responsivas con HTML5, CSS3 y Flexbox/Grid",
+      "Desarrollo de componentes interactivos utilizando React.js y JavaScript vanilla",
+      "Optimización de performance en renderizado y carga de recursos",
+      "Mantenimiento y ampliación de un simulador de manejo para custodias móviles"
+    ],
     align: "right"
   }
 ];
@@ -42,8 +54,16 @@ const jobs = [
               <span class="text-sm text-blue-400 font-medium">{job.date}</span>
             </div>
             <h3 class="text-lg font-semibold text-white">{job.title}</h3>
-            <p class="text-slate-400 text-sm mb-2">{job.company}</p>
-            <p class="text-slate-400 text-sm leading-relaxed">{job.description}</p>
+            <p class="text-slate-400 text-sm mb-4">{job.company}</p>
+            
+            <ul class="space-y-2">
+              {job.tasks.map((task) => (
+                <li class="text-slate-400 text-sm flex items-start gap-2">
+                  <span class="text-blue-500 mt-1">▸</span>
+                  {task}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       ))}
